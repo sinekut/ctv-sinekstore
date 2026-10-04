@@ -18,10 +18,15 @@
             display: flex;
             flex-direction: column;
             align-items: center;
+            position: relative;
+            min-height: 100vh;
+            overflow-x: hidden;
         }
         .header {
             text-align: center;
             margin-bottom: 25px;
+            position: relative;
+            z-index: 1;
         }
         .header h1 {
             font-size: 24px;
@@ -40,6 +45,8 @@
             display: flex;
             flex-direction: column;
             gap: 20px;
+            position: relative;
+            z-index: 1;
         }
         .card {
             background: linear-gradient(145deg, #161824, #12131d);
@@ -62,16 +69,111 @@
         }
         .profile {
             text-align: center;
-            margin-top: 10px;
+            margin-top: 15px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
         }
-        .avatar {
-            width: 80px;
-            height: 80px;
+
+        /* ------------------------------------------------------------- */
+        /*   KHUNG VÀNG PREMIUM CÓ VƯƠNG MIỆN & TÍCH XANH (ROYAL GOLD)    */
+        /* ------------------------------------------------------------- */
+        .avatar-container {
+            position: relative;
+            width: 92px;
+            height: 92px;
+            margin-bottom: 12px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        /* Viền Vàng Kim Phát Sáng Xoay Nhẹ */
+        .avatar-container::before {
+            content: '';
+            position: absolute;
+            top: -3px;
+            left: -3px;
+            right: -3px;
+            bottom: -3px;
             border-radius: 50%;
-            border: 3px solid #5865F2;
-            object-fit: cover;
-            margin-bottom: 10px;
+            background: linear-gradient(135deg, #ffe066, #f59e0b, #d97706, #fef08a, #f59e0b);
+            background-size: 200% 200%;
+            animation: goldGlow 3s ease infinite alternate;
+            filter: drop-shadow(0 0 10px rgba(245, 158, 11, 0.7));
+            z-index: 1;
         }
+
+        /* Viền Lót Đen Ngăn Cách */
+        .avatar-container::after {
+            content: '';
+            position: absolute;
+            top: 2px;
+            left: 2px;
+            right: 2px;
+            bottom: 2px;
+            background: #12131d;
+            border-radius: 50%;
+            z-index: 2;
+        }
+
+        /* Ảnh Avatar */
+        .avatar {
+            width: 82px;
+            height: 82px;
+            border-radius: 50%;
+            object-fit: cover;
+            position: relative;
+            z-index: 3;
+            border: 2px solid #fcf09f;
+            transition: transform 0.3s ease;
+        }
+
+        .card:hover .avatar {
+            transform: scale(1.05);
+        }
+
+        /* Crown (Vương Miện ở trên Đỉnh) */
+        .crown-icon {
+            position: absolute;
+            top: -15px;
+            z-index: 5;
+            font-size: 22px;
+            filter: drop-shadow(0 2px 5px rgba(245, 158, 11, 0.9));
+            animation: floatCrown 2s ease-in-out infinite alternate;
+        }
+
+        /* Tick Xanh (Ở góc dưới) */
+        .vip-badge {
+            position: absolute;
+            bottom: 2px;
+            right: 2px;
+            background: #0084ff;
+            color: #ffffff;
+            width: 22px;
+            height: 22px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 12px;
+            font-weight: bold;
+            z-index: 5;
+            border: 2px solid #12131d;
+            box-shadow: 0 0 8px rgba(0, 132, 255, 0.8);
+        }
+
+        @keyframes goldGlow {
+            0% { background-position: 0% 50%; }
+            100% { background-position: 100% 50%; }
+        }
+
+        @keyframes floatCrown {
+            0% { transform: translateY(0) rotate(-5deg); }
+            100% { transform: translateY(-3px) rotate(5deg); }
+        }
+        /* ------------------------------------------------------------- */
+
         .role {
             display: inline-block;
             background-color: rgba(88, 101, 242, 0.2);
@@ -127,7 +229,7 @@
             opacity: 0.85;
         }
 
-        /* CSS Cho Popup Thông Báo */
+        /* Popup Modal */
         .modal-overlay {
             position: fixed;
             top: 0; left: 0;
@@ -198,14 +300,56 @@
         .modal-btn:active {
             transform: scale(0.98);
         }
+
+        /* Hiệu ứng Trái Tim Hồng Nhạt Bay (Chuẩn Giống Ảnh Web Lợi) */
+        #particles-container {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: 10;
+            overflow: hidden;
+        }
+
+        .pink-heart {
+            position: absolute;
+            bottom: -20px;
+            color: #ffb3c6;
+            opacity: 0.6;
+            user-select: none;
+            filter: drop-shadow(0 0 4px rgba(255, 179, 198, 0.5));
+            animation: floatPinkHeart linear infinite;
+        }
+
+        @keyframes floatPinkHeart {
+            0% {
+                transform: translateY(0) scale(0.7) rotate(0deg);
+                opacity: 0;
+            }
+            20% {
+                opacity: 0.65;
+            }
+            80% {
+                opacity: 0.65;
+            }
+            100% {
+                transform: translateY(-105vh) scale(1) rotate(15deg);
+                opacity: 0;
+            }
+        }
     </style>
 </head>
 <body>
 
+    <!-- Container hiệu ứng trái tim -->
+    <div id="particles-container"></div>
+
     <!-- Popup Thông Báo -->
     <div id="noticeModal" class="modal-overlay">
         <div class="modal-box">
-            <div class="modal-icon">🛡️</div>
+            <div class="modal-icon">🛡</div>
             <h2 class="modal-title">SinekStore System CTV</h2>
             <div class="modal-content">
                 <p>SinekStore System Check Cộng Tác Viên Uy Tín</p>
@@ -229,9 +373,12 @@
         <div class="card">
             <span class="badge-stt">#01</span>
             <div class="profile">
+                <div class="avatar-container">
+                    <span class="crown-icon">👑</span>
+                    <img class="avatar" src="https://i.ibb.co/yBsXL8DR/Screenshot-2026-10-04-16-44-08-158-com-facebook-katana-edit.jpg" alt="Avatar CTV">
+                    <div class="vip-badge">✓</div>
+                </div>
                 <span class="role">CTV CÀY THUÊ</span>
-                <img class="avatar" src="https://i.ibb.co/yBsXL8DR/Screenshot-2026-10-04-16-44-08-158-com-facebook-katana-edit.jpg" alt="Avatar CTV">
-                
                 <h2 class="name">CTV Phạm Văn Triều</h2>
             </div>
             <ul class="info-list">
@@ -249,14 +396,17 @@
         <div class="card">
             <span class="badge-stt">#02</span>
             <div class="profile">
+                <div class="avatar-container">
+                    <span class="crown-icon">👑</span>
+                    <img class="avatar" src="https://i.ibb.co/fztNTbhF/Messenger-creation-45-A7672-A-35-AB-4-FF7-8392-623123-B9-BBC8.jpg" alt="Avatar CTV">
+                    <div class="vip-badge">✓</div>
+                </div>
                 <span class="role">CTV Rep ib </span>
-                <img class="avatar" src="https://i.ibb.co/fztNTbhF/Messenger-creation-45-A7672-A-35-AB-4-FF7-8392-623123-B9-BBC8.jpg" alt="Avatar CTV">
-                
                 <h2 class="name">CTV Lê Mạnh Tùng</h2>
             </div>
             <ul class="info-list">
                 <li><span>✔</span> hỗ trợ rep tin nhắn vào ban đêm </li>
-                <li><span>✔</span> Hoạt động:  16h - 2h hàng ngày</li>
+                <li><span>✔</span> Hoạt động: 16h - 2h hàng ngày</li>
             </ul>
             <div class="btn-group">
                 <a href="https://www.facebook.com/share/19g9wxtETU/?mibextid=wwXIfr" class="btn btn-facebook">FACEBOOK</a>
@@ -268,9 +418,12 @@
         <div class="card">
             <span class="badge-stt">#03</span>
             <div class="profile">
+                <div class="avatar-container">
+                    <span class="crown-icon">👑</span>
+                    <img class="avatar" src="https://i.ibb.co/39PvL2js/Screenshot-2026-10-04-17-25-18-348-com-facebook-katana-edit.jpg" alt="Avatar CTV">
+                    <div class="vip-badge">✓</div>
+                </div>
                 <span class="role">CTV CÀY THUÊ</span>
-                <img class="avatar" src="https://i.ibb.co/39PvL2js/Screenshot-2026-10-04-17-25-18-348-com-facebook-katana-edit.jpg" alt="Avatar CTV">
-        
                 <h2 class="name">CTV Huỳnh Khôi</h2>
             </div>
             <ul class="info-list">
@@ -288,9 +441,12 @@
         <div class="card">
             <span class="badge-stt">#04</span>
             <div class="profile">
+                <div class="avatar-container">
+                    <span class="crown-icon">👑</span>
+                    <img class="avatar" src="https://i.ibb.co/Xx5bz7bb/IMG-20261004-200045.jpg" alt="Avatar CTV">
+                    <div class="vip-badge">✓</div>
+                </div>
                 <span class="role">CTV CÀY THUÊ</span>
-                <img class="avatar" src="https://i.ibb.co/Xx5bz7bb/IMG-20261004-200045.jpg" alt="Avatar CTV">
-                
                 <h2 class="name">CTV Đặng Nguyễn Gia Bảo</h2>
             </div>
             <ul class="info-list">
@@ -306,11 +462,38 @@
 
     </div>
 
-    <!-- Script đóng Popup -->
     <script>
         function closeModal() {
             document.getElementById('noticeModal').style.display = 'none';
         }
+
+        function createPinkHeart() {
+            const container = document.getElementById('particles-container');
+            if (!container) return;
+
+            const heart = document.createElement('div');
+            heart.classList.add('pink-heart');
+            
+            heart.innerHTML = `<svg width="100%" height="100%" viewBox="0 0 24 24" fill="#ffb3c6">
+                <path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"/>
+            </svg>`;
+
+            const size = Math.random() * 6 + 8;
+            heart.style.width = `${size}px`;
+            heart.style.height = `${size}px`;
+            heart.style.left = `${Math.random() * 98}%`;
+
+            const duration = Math.random() * 4 + 6;
+            heart.style.animationDuration = `${duration}s`;
+
+            container.appendChild(heart);
+
+            setTimeout(() => {
+                heart.remove();
+            }, duration * 1000);
+        }
+
+        setInterval(createPinkHeart, 250);
     </script>
 </body>
 </html>
