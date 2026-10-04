@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Danh Sách Cộng Tác Viên Uy Tín</title>
+    <title>Danh Sách Ban Quản Trị & Cộng Tác Viên</title>
     <style>
         * {
             margin: 0;
@@ -56,6 +56,14 @@
             position: relative;
             box-shadow: 0 8px 20px rgba(0, 0, 0, 0.4);
         }
+
+        /* CARD DÀNH RIÊNG CHO ADMIN */
+        .card.admin-card {
+            background: linear-gradient(145deg, #1d1a29, #131221);
+            border: 1px solid #ffaa0066;
+            box-shadow: 0 0 25px rgba(255, 170, 0, 0.25);
+        }
+
         .badge-stt {
             position: absolute;
             top: 15px;
@@ -67,6 +75,12 @@
             padding: 4px 10px;
             border-radius: 20px;
         }
+        .badge-admin-tag {
+            background-color: rgba(255, 170, 0, 0.2) !important;
+            color: #ffcc00 !important;
+            border: 1px solid #ffaa0088;
+        }
+
         .profile {
             text-align: center;
             margin-top: 15px;
@@ -184,6 +198,11 @@
             border-radius: 4px;
             margin-bottom: 5px;
         }
+        .role-admin {
+            background-color: rgba(255, 170, 0, 0.2);
+            color: #ffcc00;
+        }
+
         .name {
             font-size: 20px;
             font-weight: bold;
@@ -301,7 +320,7 @@
             transform: scale(0.98);
         }
 
-        /* Hiệu ứng Trái Tim Hồng Nhạt Bay (Chuẩn Giống Ảnh Web Lợi) */
+        /* Hiệu ứng Trái Tim Hồng Nhạt Bay */
         #particles-container {
             position: fixed;
             top: 0;
@@ -363,11 +382,35 @@
     </div>
 
     <div class="header">
-        <h1>Hệ Thống Cộng Tác Viên</h1>
-        <p>Danh sách CTV Uy Tín - Kiểm Tra Tránh Giả Mạo</p>
+        <h1>Hệ Thống Sinek Store</h1>
+        <p>Danh sách Admin & Cộng Tác Viên Chính Thức</p>
     </div>
 
     <div class="container">
+
+        <!-- THẺ ADMIN SYSTEM -->
+        <div class="card admin-card">
+            <span class="badge-stt badge-admin-tag">👑 ADMIN</span>
+            <div class="profile">
+                <div class="avatar-container">
+                    <span class="crown-icon">👑</span>
+                    <img class="avatar" src="https://i.ibb.co/6V8qTFz/FB-IMG-1791121966996.jpg" alt="Avatar Admin">
+                    <div class="vip-badge">✓</div>
+                </div>
+                <span class="role role-admin">ADMIN - OWNER SYSTEM</span>
+                <h2 class="name">Si nè</h2>
+            </div>
+            <ul class="info-list">
+                <li><span>👑</span> Admin Quản Lý Sinek Store</li>
+                <li><span>💳</span> Tên GD / STK: Nguyen Huynh Anh Minh</li>
+                <li><span>📞</span> SĐT / Zalo: 0794221549</li>
+                <li><span>⚡</span> Hỗ trợ & Giải quyết khiếu nại 24/7</li>
+            </ul>
+            <div class="btn-group">
+                <a href="https://www.facebook.com/share/19WgEmpSmM/" target="_blank" class="btn btn-facebook">FACEBOOK ADMIN</a>
+                <a href="https://zalo.me/0794221549" target="_blank" class="btn btn-zalo">ZALO ADMIN</a>
+            </div>
+        </div>
 
         <!-- CTV 1 -->
         <div class="card">
@@ -387,8 +430,8 @@
                 <li><span>✔</span> Hỗ trợ nhiệt tình 24/7</li>
             </ul>
             <div class="btn-group">
-                <a href="https://www.facebook.com/share/1DhAk6KeVN/" class="btn btn-facebook">FACEBOOK</a>
-                <a href="https://zalo.me/0981219124" class="btn btn-zalo">ZALO</a>
+                <a href="https://www.facebook.com/share/1DhAk6KeVN/" target="_blank" class="btn btn-facebook">FACEBOOK</a>
+                <a href="https://zalo.me/0981219124" target="_blank" class="btn btn-zalo">ZALO</a>
             </div>
         </div>
 
@@ -405,12 +448,12 @@
                 <h2 class="name">CTV Lê Mạnh Tùng</h2>
             </div>
             <ul class="info-list">
-                <li><span>✔</span> hỗ trợ rep tin nhắn vào ban đêm </li>
+                <li><span>✔</span> Hỗ trợ rep tin nhắn vào ban đêm </li>
                 <li><span>✔</span> Hoạt động: 16h - 2h hàng ngày</li>
             </ul>
             <div class="btn-group">
-                <a href="https://www.facebook.com/share/19g9wxtETU/?mibextid=wwXIfr" class="btn btn-facebook">FACEBOOK</a>
-                <a href="https://zalo.me/0389240856" class="btn btn-zalo">ZALO</a>
+                <a href="https://www.facebook.com/share/19g9wxtETU/?mibextid=wwXIfr" target="_blank" class="btn btn-facebook">FACEBOOK</a>
+                <a href="https://zalo.me/0389240856" target="_blank" class="btn btn-zalo">ZALO</a>
             </div>
         </div>
 
@@ -427,13 +470,13 @@
                 <h2 class="name">CTV Huỳnh Khôi</h2>
             </div>
             <ul class="info-list">
-                <li><span>✔</span> Chuyên cày thuê King Legacy và blox fruit </li>
+                <li><span>✔</span> Chuyên cày thuê King Legacy và Blox Fruits </li>
                 <li><span>📞</span> Zalo hỗ trợ: 0398176544</li>
                 <li><span>✔</span> Hỗ trợ nhiệt tình 24/7</li>
             </ul>
             <div class="btn-group">
                 <a href="https://www.facebook.com/share/1DKZV3GbiS/" target="_blank" class="btn btn-facebook">FACEBOOK</a>
-                <a href="https://zalo.me/0398176544" class="btn btn-zalo">ZALO</a>
+                <a href="https://zalo.me/0398176544" target="_blank" class="btn btn-zalo">ZALO</a>
             </div>
         </div>
 
