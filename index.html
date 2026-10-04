@@ -126,9 +126,97 @@
         .btn:hover {
             opacity: 0.85;
         }
+
+        /* CSS Cho Popup Thông Báo */
+        .modal-overlay {
+            position: fixed;
+            top: 0; left: 0;
+            width: 100%; height: 100%;
+            background: rgba(0, 0, 0, 0.8);
+            backdrop-filter: blur(5px);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            z-index: 9999;
+            padding: 15px;
+            box-sizing: border-box;
+        }
+
+        .modal-box {
+            background: #12181f;
+            border: 1px solid #1e293b;
+            border-radius: 16px;
+            padding: 24px;
+            max-width: 400px;
+            width: 100%;
+            color: #ffffff;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+            animation: modalFadeIn 0.3s ease-out;
+        }
+
+        @keyframes modalFadeIn {
+            from { opacity: 0; transform: scale(0.9); }
+            to { opacity: 1; transform: scale(1); }
+        }
+
+        .modal-icon {
+            font-size: 28px;
+            margin-bottom: 12px;
+        }
+
+        .modal-title {
+            font-size: 20px;
+            font-weight: bold;
+            margin-bottom: 15px;
+            color: #ffffff;
+        }
+
+        .modal-content {
+            font-size: 14px;
+            line-height: 1.6;
+            color: #cbd5e1;
+            margin-bottom: 20px;
+        }
+
+        .modal-content p {
+            margin-bottom: 10px;
+        }
+
+        .modal-btn {
+            width: 100%;
+            padding: 12px;
+            background: #67e8f9;
+            color: #0f172a;
+            border: none;
+            border-radius: 25px;
+            font-weight: bold;
+            font-size: 15px;
+            cursor: pointer;
+            transition: 0.2s;
+        }
+
+        .modal-btn:active {
+            transform: scale(0.98);
+        }
     </style>
 </head>
 <body>
+
+    <!-- Popup Thông Báo -->
+    <div id="noticeModal" class="modal-overlay">
+        <div class="modal-box">
+            <div class="modal-icon">🛡️</div>
+            <h2 class="modal-title">SinekStore System CTV</h2>
+            <div class="modal-content">
+                <p>SinekStore System Check Cộng Tác Viên Uy Tín</p>
+                <p>Web đang set up và Update Dần Để Hoàn Thiện Hơn</p>
+                <p>Giao Dịch Nhanh Gọn Chất Lượng</p>
+                <p><strong>Lưu ý:</strong> Chỉ giao dịch trực tiếp qua các CTV có tên trong danh sách chính thức.</p>
+                <p>Anh em Check Kỹ Real Fake Rồi Giao Dịch Nhé!</p>
+            </div>
+            <button class="modal-btn" onclick="closeModal()">OK</button>
+        </div>
+    </div>
 
     <div class="header">
         <h1>Hệ Thống Cộng Tác Viên</h1>
@@ -148,7 +236,7 @@
             </div>
             <ul class="info-list">
                 <li><span>✔</span> Chuyên cày thuê King Legacy </li>
-                <li><span>✔</span> Zalo hỗ trợ: 0981219124</li>
+                <li><span>📞</span> Zalo hỗ trợ: 0981219124</li>
                 <li><span>✔</span> Hỗ trợ nhiệt tình 24/7</li>
             </ul>
             <div class="btn-group">
@@ -176,10 +264,6 @@
             </div>
         </div>
 
-    </div>
-
-</body>
-</html>
         <!-- CTV 3 -->
         <div class="card">
             <span class="badge-stt">#03</span>
@@ -195,8 +279,38 @@
                 <li><span>✔</span> Hỗ trợ nhiệt tình 24/7</li>
             </ul>
             <div class="btn-group">
-                <a href="https://www.facebook.com/share/1FARMXFcHi/" target="_blank" class="btn btn-facebook">FACEBOOK</a>
+                <a href="https://www.facebook.com/share/1DKZV3GbiS/" target="_blank" class="btn btn-facebook">FACEBOOK</a>
                 <a href="https://zalo.me/0398176544" class="btn btn-zalo">ZALO</a>
             </div>
         </div>
-        
+
+        <!-- CTV 4 -->
+        <div class="card">
+            <span class="badge-stt">#04</span>
+            <div class="profile">
+                <span class="role">CTV CÀY THUÊ</span>
+                <img class="avatar" src="https://i.ibb.co/Xx5bz7bb/IMG-20261004-200045.jpg" alt="Avatar CTV">
+                
+                <h2 class="name">CTV TÊN_CTV_4</h2>
+            </div>
+            <ul class="info-list">
+                <li><span>✔</span> Chuyên cày thuê King Legacy </li>
+                <li><span>📞</span> Zalo hỗ trợ: 0328700984</li>
+                <li><span>✔</span> Hỗ trợ nhiệt tình 24/7</li>
+            </ul>
+            <div class="btn-group">
+                <a href="https://www.facebook.com/share/1DYuUfeSMK/" target="_blank" class="btn btn-facebook">FACEBOOK</a>
+                <a href="https://zalo.me/0328700984" target="_blank" class="btn btn-zalo">ZALO</a>
+            </div>
+        </div>
+
+    </div>
+
+    <!-- Script đóng Popup -->
+    <script>
+        function closeModal() {
+            document.getElementById('noticeModal').style.display = 'none';
+        }
+    </script>
+</body>
+</html>
